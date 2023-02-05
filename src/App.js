@@ -1,22 +1,29 @@
 import './App.css';
+import Home from './Home'
+import { createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#5271FF',
+      darker: '#021882',
+    },
+    // neutral: {
+    //   main: '#64748B',
+    //   contrastText: '#fff',
+    // },
+  },
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+      {/* <header className="App-header">
         <p>
           Technology and Policy Society at Johns Hopkins
         </p>
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
+      </header> */}
+      <Home theme={theme}/>
     </div>
   );
 }
