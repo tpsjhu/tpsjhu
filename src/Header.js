@@ -21,12 +21,13 @@ const pages = ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us'];
 
 function ResponsiveAppBar({theme}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  const [curPage, setCurPage] = React.useState(pages[0]);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
+
     setAnchorElNav(null);
   };
 
@@ -125,7 +126,7 @@ function ResponsiveAppBar({theme}) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                variant="text"
+                variant={page == curPage ? "contained" : "text"}
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: '061E84', display: 'block' }}
