@@ -1,29 +1,36 @@
 import './App.css';
 import Home from './Home'
+import Header from './Header'
+import Footer from './components/Footer'
 import { createTheme } from '@mui/material/styles';
+import Container from '@mui/material/Container';
 
 const theme = createTheme({
-  palette: {
+  typography: {
+    fontFamily: [
+      'Poppins', 'sans-serif'
+    ].join(','),
+  },
+    palette: {
     primary: {
       main: '#5271FF',
       darker: '#021882',
     },
-    // neutral: {
-    //   main: '#64748B',
-    //   contrastText: '#fff',
-    // },
-  },
+    header: {
+      primary: '#021882',
+      secondary: '#5271FF',
+    },
+    },
 });
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <p>
-          Technology and Policy Society at Johns Hopkins
-        </p>
-      </header> */}
-      <Home theme={theme}/>
+      <Container maxWidth="lg">
+        <Header theme={theme}/>
+        <Home theme={theme}/>
+      </Container>
+      <Footer theme={theme} />
     </div>
   );
 }
