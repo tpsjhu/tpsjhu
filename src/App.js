@@ -4,6 +4,12 @@ import Header from './Header'
 import Footer from './components/Footer'
 import { createTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Archive from './Archive';
 
 const theme = createTheme({
   typography: {
@@ -27,8 +33,13 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="lg">
+      <Router>
         <Header theme={theme}/>
-        <Home theme={theme}/>
+          <Routes>
+            <Route path="/" element={<Home theme={theme}/>} /> 
+            <Route path="/archive" element={<Archive theme={theme}/>} /> 
+          </Routes>
+        </Router>
       </Container>
       <Footer theme={theme} />
     </div>

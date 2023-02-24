@@ -1,22 +1,20 @@
-import FeaturedBlogCard from './components/FeaturedBlogCard';
-import BlogCard from './components/BlogCard';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 
-import DiscussionSummaries from './components/DiscussionSummaries';
-import EmailCard from './components/EmailCard';  
+import BlogResult from './components/BlogResult';
+import Filters from './components/Filters';
   
-function Home({theme}) {
+function SearchResults({theme}) {
     const fakeBlog = {
         title: "How CRISPR could help save crops from devastation caused by pests",
         author: "Salal Humair",
         date: "12/21/2022",
         snippet: "Gene editing insects could help reduce reliance on pesticides—and help protect billion-dollar industries.",
         text: "blog text body",
-        tags: ["Artificial Intelligence", "Panel", "Admissions"]
+        tags: ["Artificial Intelligence", "Panel"]
     }
     const fakeBlogs = Array(5).fill(fakeBlog);
 
@@ -25,21 +23,21 @@ function Home({theme}) {
         <Container maxWidth="lg">
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={4} sx={{mt: 1}}>
-                <Grid item xs={7}>
-                    <FeaturedBlogCard theme={theme} blog={fakeBlogs[0]}/>
-                    {fakeBlogs
-                        .map((blog, index) => {
-                            return ( <div>
-                            <BlogCard theme={theme} blog={blog}/>
-                            <Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />
-                            </div>
-                        )})}
+                <Grid item xs={4}>
+                    <Filters theme={theme}/>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={8}>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
-                    <EmailCard theme={theme}/>
-                    <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
-                    <DiscussionSummaries /> 
+
+                    <Grid container spacing={4} sx={{mt: 1}}>
+                            {fakeBlogs
+                                .map((blog, index) => {
+                                    return ( <Grid item xs={6}>
+
+                                    <BlogResult theme={theme} blog={blog}/>
+                                    </Grid>
+                                )})}
+                    </Grid>
                 </Grid>
                 </Grid>
                 </Box>
@@ -47,4 +45,4 @@ function Home({theme}) {
         </ThemeProvider>
     );
 }
-export default Home;
+export default SearchResults;
