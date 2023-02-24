@@ -10,6 +10,7 @@ import {
   Route,
 } from "react-router-dom";
 import Archive from './Archive';
+import BlogPage from './BlogPage';
 
 const theme = createTheme({
   typography: {
