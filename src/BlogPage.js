@@ -24,22 +24,22 @@ function BlogPost({theme}) {
         {fakeBlog.title}
       </Typography>
       <Typography variant="subtitle1" gutterBottom sx={{mb:2}}>
-        By {fakeBlog.author} on {fakeBlog.date}
+        {fakeBlog.date} | By {fakeBlog.author} 
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+      <Grid container spacing={3} justifyContent="center">
+        <Grid item xs={6} md={3}>
           <Card>
             <CardMedia
-              style={{height: '0', paddingTop: '56.25%', width: '400px', alignContent: 'right'}}
+              style={{height: '0', paddingTop: '56.25%'}}
               image={fakeBlog.image1}
               title="Image 1"
             />
           </Card>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6} md={3}>
           <Card>
             <CardMedia
-              style={{height: '0', paddingTop: '56.25%', width: '400px'}}
+              style={{height: '0', paddingTop: '56.25%'}}
               image={fakeBlog.image2}
               title="Image 2"
             />
