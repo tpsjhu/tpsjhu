@@ -21,7 +21,7 @@ function ResponsiveAppBar({theme}) {
 
   return (
     <ThemeProvider theme={theme}>
-    <AppBar component="nav" position="static" style={{background: 'transparent', boxShadow: 'none'}}>
+    <AppBar component="nav" position="relative" style={{background: 'white', boxShadow: 'none'}} sx={{ zIndex: theme.zIndex.drawer + 1 }}>
         <Toolbar>
         <Tooltip title="Home">
             <Button href="/" >
