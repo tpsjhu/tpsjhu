@@ -1,0 +1,67 @@
+{
+    "Blog posts": [
+    {
+        "title": "How CRISPR could help save crops from devastation caused by pests",
+        "author": "Salal Humair",
+        "date": "12/21/2022",
+        "snippet": "Gene editing insects could help reduce reliance on pesticides—and help protect billion-dollar industries.",
+        "text": "blog text body",
+        "tags": [
+            "Artificial Intelligence",
+            "Biotechnology"
+        ],
+        "image1": "https://source.unsplash.com/random/800x450",
+        "image2": "https://source.unsplash.com/random/800x450"
+    },
+    {
+        "title": "Fake blog 2",
+        "author": "Emi Ochoa",
+        "date": "03/01/2023",
+        "snippet": "New blog post from senior Emi Ochoa.",
+        "text": "blog text body",
+        "tags": [
+            "ChatGPT",
+            "Artificial Intelligence"
+        ],
+        "image1": "https://source.unsplash.com/random/800x450",
+        "image2": "https://source.unsplash.com/random/800x450"
+    },
+    {
+        "title": "ChatGPT launches",
+        "author": "Emi Ochoa",
+        "date": "12/21/2022",
+        "snippet": "Snippet about the launch of ChatGPT and it's implications.",
+        "text": "blog text body",
+        "tags": [
+            "Biotechnology",
+            "ChatGPT"
+        ],
+        "image1": "https://source.unsplash.com/random/800x450",
+        "image2": "https://source.unsplash.com/random/800x450"
+    }
+    ],
+    "Speakers": [
+        {
+            "title": "Speaker 1",
+            "body": "Speaker summary body"
+        }
+    ],
+    "Discussions": [
+        {
+            "title": "Discussion 1",
+            "body": "discussion summary body"
+        }
+    ],
+    "Panels": [
+        {
+            "title": "Panel 1",
+            "body": "panel summary body"
+        }
+    ],
+    "tags": [
+        "Artificial Intelligence",
+        "Biotechnology",
+        "ChatGPT"
+    ]
+
+}

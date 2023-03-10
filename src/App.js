@@ -41,7 +41,6 @@ function App() {
             <Route path="/" element={<Home theme={theme}/>} /> 
             <Route path="/archive" element={<Archive theme={theme}/>} /> 
             <Route path="/blog" element={<BlogPage theme={theme}/>} /> 
-            <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
           </Routes>
         </Router>
       </Container>
