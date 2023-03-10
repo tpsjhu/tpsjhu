@@ -13,7 +13,7 @@ import logo from './logo.png'; // Tell webpack this JS file uses this image
 
 
 const pages = ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us'];
-const links = ['/', '/tree', '/archive', '/events', '/about'];
+const links = ['/', '/tree', '/archive', '/events', '/aboutus'];
 
 
 function ResponsiveAppBar({theme}) {

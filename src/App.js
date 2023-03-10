@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Archive from './Archive';
 import BlogPage from './BlogPage';
+import AboutUs from './AboutUs';
 
 const theme = createTheme({
   typography: {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/" element={<Home theme={theme}/>} /> 
             <Route path="/archive" element={<Archive theme={theme}/>} /> 
             <Route path="/blog" element={<BlogPage theme={theme}/>} /> 
+            <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
           </Routes>
         </Router>
       </Container>
