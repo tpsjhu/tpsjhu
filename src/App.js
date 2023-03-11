@@ -13,6 +13,7 @@ import Archive from './Archive';
 import BlogPage from './BlogPage';
 import AboutUs from './AboutUs';
 
+// I don't think createTheme is created on time before it is passed to the different routes initially
 const theme = createTheme({
   typography: {
     fontFamily: [
@@ -40,7 +41,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home theme={theme}/>} /> 
             <Route path="/archive" element={<Archive theme={theme}/>} /> 
-            <Route path="/blog" element={<BlogPage theme={theme}/>} /> 
+            <Route path="/blog/:title" element={<BlogPage theme={theme} />} />
+            <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
           </Routes>
         </Router>
       </Container>

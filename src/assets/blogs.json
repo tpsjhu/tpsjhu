@@ -1,5 +1,18 @@
 {
     "Blog posts": [
+        {
+            "title": "1",
+            "author": "Kurtis Yoon",
+            "date": "3/12/2023",
+            "snippet": "Kevin is incredible",
+            "text": "Kevin is a great programmer as far as I know",
+            "tags": [
+                "Artificial Intelligence",
+                "Biotechnology"
+            ],
+            "image1": "https://source.unsplash.com/random/800x450",
+            "image2": "https://source.unsplash.com/random/800x450"
+        },
     {
         "title": "How CRISPR could help save crops from devastation caused by pests",
         "author": "Salal Humair",
@@ -31,7 +44,7 @@
         "author": "Emi Ochoa",
         "date": "12/21/2022",
         "snippet": "Snippet about the launch of ChatGPT and it's implications.",
-        "text": "blog text body",
+        "text": "blog text body Kurtis edited this",
         "tags": [
             "Biotechnology",
             "ChatGPT"

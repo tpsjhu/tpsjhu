@@ -16,7 +16,7 @@ function BlogCard(props) {
         <ThemeProvider theme={theme}>
         <Box>
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}} 
-            onClick={()=> navigate('/blogs/'+ blogId)}
+            onClick={()=> navigate('/blog/'+ blogId)}
         >
         <CardContent>
           <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }}component="div" color="header.primary">
