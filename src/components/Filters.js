@@ -62,10 +62,9 @@ function Filters({theme, showCards, setShowCards}) {
   return (
       <ThemeProvider theme={theme}>
         <Box sx={{ overflow: 'auto' }}>
-        <Divider />
         <Box sx={{ overflow: 'auto' }}>
         <Typography variant="h4" sx={{ my: 2, fontWeight: 800, textAlign: 'left' }} color="header.primary">Filters</Typography>
-        <Typography variant="h6" sx={{ fontWeight: 600, textAlign: 'left' }} color="header.primary">Date</Typography>        
+        {/* <Typography variant="h6" sx={{ fontWeight: 600, textAlign: 'left' }} color="header.primary">Date</Typography>        
         <List>
         <FormGroup>
         <RadioGroup
@@ -82,7 +81,7 @@ function Filters({theme, showCards, setShowCards}) {
           ))}
           </RadioGroup>
           </FormGroup>
-        </List>
+        </List> */}
         </Box>
         <Divider />
         <Typography variant="h6" sx={{ mt: 1, fontWeight: 600, textAlign: 'left' }} color="header.primary">Type</Typography>

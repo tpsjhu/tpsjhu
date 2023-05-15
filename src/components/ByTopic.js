@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 function ByTopic(props) {
     const { theme } = props;
@@ -18,7 +19,9 @@ function ByTopic(props) {
         <ThemeProvider theme={theme}>
             <Typography variant="h5" color="white" sx={{textAlign: "left"}}>By Topic</Typography>
             {topics.map((topic, index) => (
-                <Typography variant="body1" color="primary" sx={{textAlign: "left"}} onClick={()=> console.log('clicked: ', topic)}>{topic}</Typography>
+                <a href="/archive">
+                    <Typography variant="body1" color="primary" sx={{textAlign: "left"}} >{topic}</Typography>
+                </a>
             ))}
         </ThemeProvider>
     );

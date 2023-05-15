@@ -12,8 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import logo from './logo.png'; // Tell webpack this JS file uses this image
 
 
-const pages = ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us'];
-const links = ['/', '/tree', '/archive', '/events', '/aboutus'];
+const pages = ['Home', 'Ancestry Tree', 'Archive', 'About Us'];
+const links = ['/', '/tree', '/archive',  '/aboutus'];
 
 
 function ResponsiveAppBar({theme}) {

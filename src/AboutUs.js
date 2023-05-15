@@ -62,7 +62,7 @@ function AboutUs({theme}) {
           <div style={{...styles.summary, marginTop: theme.spacing(4)}}>
             {/* Summary */}
             <Typography variant="body1" color="textSecondary">
-              A brief description about the organization. A brief description about the organization. A brief description about the organization. A brief description about the organization. A brief description about the organization. A brief description about the organization. A brief description about the organization.
+              Technology and Policy Society at Johns Hopkins (TPS@JHU) is a non-profit policy society sponsored by the Berman Institute of Bioethics, aimed at facilitating policy research and dialogues and impacting key decision-makers in the policy sphere. "Citizens of future society, unite!"
             </Typography>
           </div>
           <Typography variant="h3" gutterBottom sx={{fontWeight: 800}} color="header.secondary" align="center">

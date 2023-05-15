@@ -11,11 +11,6 @@ import Filters from './components/Filters';
   
 function SearchResults({theme}) {
     const [showCards, setShowCards] = useState(assets["Blog posts"].concat(assets["Speakers"], assets["Discussions"], assets["Panels"]));
-    console.log("showcards: ", showCards);
-    const [typeFilters, setTypeFilters] = useState({'Blog post': false, 'Speaker': false, 'Discussion': false, 'Panel': false});
-    const [topicFilters, setTopicFilters] = useState(assets.tags.reduce((obj, key) => ({ ...obj, [key]: false}), {}));
-    const [dateFilter, setDateFilter] = useState("None")
-  
 
     return (
         <ThemeProvider theme={theme}>
