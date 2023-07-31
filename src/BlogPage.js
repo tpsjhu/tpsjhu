@@ -13,11 +13,8 @@ import assets from './assets/blogs.json';
 function BlogPost(props) {
   const {title} = useParams();
   const {theme} = props;
-  console.log("title: ", title);
   const blogTitle = title.replaceAll("-", " ");
   const blog = assets["Blog posts"].find(o => o.title === blogTitle);
-
-  console.log("blog: ", blog)
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,9 +48,11 @@ function BlogPost(props) {
         </Grid>
       </Grid>
       <CardContent>
-        <Typography variant="body1" gutterBottom sx={{textAlign: 'justify'}} color="text.secondary">
-          {blog.text}
-        </Typography>
+        {blog.text.map((paragraph, index) => (
+          <Typography key={index} variant="body1" gutterBottom sx={{textAlign: 'justify'}} color="text.secondary">
+            {paragraph}
+          </Typography>
+        ))}
       </CardContent>
     </div>
     </ThemeProvider>
