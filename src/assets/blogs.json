@@ -5,7 +5,7 @@
             "author": "Kurtis Yoon",
             "date": "3/12/2023",
             "snippet": "Kevin is incredible",
-            "text": "Kevin is a great programmer as far as I know",
+            "text": ["Kevin is a great programmer as far as I know"],
             "tags": [
                 "Artificial Intelligence",
                 "Biotechnology"
@@ -18,7 +18,11 @@
         "author": "Salal Humair",
         "date": "12/21/2022",
         "snippet": "Gene editing insects could help reduce reliance on pesticides—and help protect billion-dollar industries.",
-        "text": "blog text body",
+        "text": [
+            "Hold me close and hold me fast,",
+            "The magic spell you cast.",
+            "This is la vie en rose"
+        ],
         "tags": [
             "Artificial Intelligence",
             "Biotechnology"
@@ -31,7 +35,7 @@
         "author": "Emi Ochoa",
         "date": "03/01/2023",
         "snippet": "New blog post from senior Emi Ochoa.",
-        "text": "blog text body",
+        "text": ["blog text body"],
         "tags": [
             "ChatGPT",
             "Artificial Intelligence"
@@ -44,7 +48,7 @@
         "author": "Emi Ochoa",
         "date": "12/21/2022",
         "snippet": "Snippet about the launch of ChatGPT and it's implications.",
-        "text": "blog text body Kurtis edited this",
+        "text": ["blog text body Kurtis edited this"],
         "tags": [
             "Biotechnology",
             "ChatGPT"
