@@ -11,7 +11,6 @@ import { ThemeProvider } from '@mui/material/styles';
 
 function BlogResult(props) {
     const { theme, blog } = props;
-
     return (
         <ThemeProvider theme={theme}>
         <Box>
@@ -27,13 +26,13 @@ function BlogResult(props) {
             spacing={2}
             sx={{my: 1,}}
             >
-                {blog.tags ? blog.tags.map((tag, index) => (
-                    <Chip label={tag} color="primary"/>
-                )) : <></>
+                {blog.tags ? Object.entries(blog.tags).map(([key, value]) => (
+                    <Chip label={value} color="primary"/>
+                )) : null
                 }
           </Stack>
           <Typography variant="body1" sx={{textAlign: 'left'}}>
-            {blog.snippet}
+            {blog.description}
           </Typography>
         </CardContent>
       </Card>

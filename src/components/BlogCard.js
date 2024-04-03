@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 function BlogCard(props) {
     const { theme, blog } = props;
     const navigate = useNavigate();
-    const blogId = blog.title.replaceAll(" ", "-");
+    const blogId = blog.id;
 
     return (
         <ThemeProvider theme={theme}>
@@ -23,10 +23,10 @@ function BlogCard(props) {
             {blog.title}
           </Typography>
           <Typography variant="subtitle1" sx={{ mb: 1, textAlign: 'left' }} color="text.secondary">
-            {blog.date + " " +blog.author}
+            {blog.datePosted + " " +blog.author}
           </Typography>
           <Typography variant="body1" sx={{textAlign: 'left'}}>
-            {blog.snippet}
+            {blog.description}
           </Typography>
         </CardContent>
       </Card>
