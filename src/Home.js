@@ -7,18 +7,48 @@ import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 
 import DiscussionSummaries from './components/DiscussionSummaries';
-import EmailCard from './components/EmailCard';  
+import EmailCard from './components/EmailCard';
+import {initializeApp} from "firebase/app";
+import {get, getDatabase, ref} from "firebase/database";
+import {useState,useEffect} from "react";
   
 function Home({theme}) {
-    const fakeBlog = {
-        title: "How CRISPR could help save crops from devastation caused by pests",
-        author: "Salal Humair",
-        date: "12/21/2022",
-        snippet: "Gene editing insects could help reduce reliance on pesticides—and help protect billion-dollar industries.",
-        text: "blog text body",
-        tags: ["Artificial Intelligence", "Panel", "Admissions"]
+    const [blogs, setBlogs] = useState(null);
+
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_APIKEY,
+        authDomain: process.env.REACT_APP_AUTHDOMAIN,
+        projectId: process.env.REACT_APP_PROJECTID,
+        storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+        appId: process.env.REACT_APP_APPID,
+        measurementId: process.env.REACT_APP_MEASUREMENTID
+    };
+
+
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    async function getBlogs() {
+        const fourPlaceCarts = ref(db, 'Posts');
+        const snapshot = await get(fourPlaceCarts);
+        if (snapshot.exists()) {
+            let posts = []
+            Object.entries(snapshot.val()).forEach(([key,value]) => {
+                posts.push(value);
+            });
+            setBlogs(posts)
+            //  console.log(snapshot.val());
+        }
+        else {
+            //  console.log("No data available");
+        }
     }
-    const fakeBlogs = Array(5).fill(fakeBlog);
+
+    useEffect(() => {
+        getBlogs();
+    }, []);
 
     return (
         <ThemeProvider theme={theme}>
@@ -26,14 +56,18 @@ function Home({theme}) {
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={4} sx={{mt: 1}}>
                 <Grid item xs={7}>
-                    <FeaturedBlogCard theme={theme} blog={fakeBlogs[0]}/>
-                    {fakeBlogs
+                    {blogs && blogs.length > 0 &&
+                    <FeaturedBlogCard theme={theme} blog={blogs[0]}/>
+                    }
+                    {blogs && blogs
                         .map((blog, index) => {
+                            if (index !== 0) {
                             return ( <div>
                             <BlogCard theme={theme} blog={blog}/>
                             <Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />
                             </div>
-                        )})}
+
+                        )}})}
                 </Grid>
                 <Grid item xs={5}>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
