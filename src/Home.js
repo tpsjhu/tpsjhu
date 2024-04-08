@@ -8,42 +8,42 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import DiscussionSummaries from './components/DiscussionSummaries';
 import EmailCard from './components/EmailCard';
-import {initializeApp} from "firebase/app";
-import {get, getDatabase, ref} from "firebase/database";
+import { collection, doc, getDocs,query, where } from "firebase/firestore";
+
 import {useState,useEffect} from "react";
-  
+import {initializeApp} from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+
+ const firebaseConfig = {
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
+    measurementId: process.env.REACT_APP_MEASUREMENTID
+};
+
+
+ const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
 function Home({theme}) {
     const [blogs, setBlogs] = useState(null);
 
-    const firebaseConfig = {
-        apiKey: process.env.REACT_APP_APIKEY,
-        authDomain: process.env.REACT_APP_AUTHDOMAIN,
-        projectId: process.env.REACT_APP_PROJECTID,
-        storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-        messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-        appId: process.env.REACT_APP_APPID,
-        measurementId: process.env.REACT_APP_MEASUREMENTID
-    };
-
-
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
 
     async function getBlogs() {
-        const fourPlaceCarts = ref(db, 'Posts');
-        const snapshot = await get(fourPlaceCarts);
-        if (snapshot.exists()) {
-            let posts = []
-            Object.entries(snapshot.val()).forEach(([key,value]) => {
-                posts.push(value);
-            });
-            setBlogs(posts)
-            //  console.log(snapshot.val());
-        }
-        else {
-            //  console.log("No data available");
-        }
+        let todaysDate = new Date();
+
+      
+        const q = query(collection(db, "articles"))
+        const querySnapshot = await getDocs(q);
+        let posts = []
+        querySnapshot.forEach((doc) => {
+              posts.push(doc.data());
+        });
+        setBlogs(posts);
     }
 
     useEffect(() => {

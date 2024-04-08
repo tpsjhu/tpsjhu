@@ -10,23 +10,10 @@ import { getDatabase, ref, set, push, onValue, get, child  } from "firebase/data
 import { getAnalytics } from "firebase/analytics";
 import BlogResult from './components/BlogResult';
 import Filters from './components/Filters';
+import { db } from './Home';
   
 function SearchResults({theme}) {
     const [showCards, setShowCards] = useState(null);
-    const firebaseConfig = {
-        apiKey: process.env.REACT_APP_APIKEY,
-        authDomain: process.env.REACT_APP_AUTHDOMAIN,
-        projectId: process.env.REACT_APP_PROJECTID,
-        storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-        messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-        appId: process.env.REACT_APP_APPID,
-        measurementId: process.env.REACT_APP_MEASUREMENTID
-    };
-
-
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
 
     async function getBlogs() {
         const fourPlaceCarts = ref(db, 'Posts');

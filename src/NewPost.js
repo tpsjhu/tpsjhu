@@ -5,11 +5,10 @@ import TextField from "@mui/material/TextField";
 import Chip from '@mui/material/Chip';
 //import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
-import {initializeApp} from "firebase/app";
-import {getDatabase, ref, set, push} from "firebase/database";
+import { collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from 'uuid';
-
+import {db} from "./Home";
+import {auth} from "./Home";
 
 function NewPost(props) {
     const {theme} = props;
@@ -47,22 +46,6 @@ function NewPost(props) {
         },
     };
 
-    const firebaseConfig = {
-        apiKey: process.env.REACT_APP_APIKEY,
-        authDomain: process.env.REACT_APP_AUTHDOMAIN,
-        projectId: process.env.REACT_APP_PROJECTID,
-        storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-        messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-        appId: process.env.REACT_APP_APPID,
-        measurementId: process.env.REACT_APP_MEASUREMENTID
-    };
-
-
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-
     function handleNewTag(e) {
         if (e.keyCode === 13) {
             setTags([...tags, e.target.value]);
@@ -70,7 +53,7 @@ function NewPost(props) {
         }
     }
 
-    function handleNewPost(e){
+    async function handleNewPost(e){
         e.preventDefault();
         if(!author || !title || !tags || !description || !articleContent){
             alert("Please fill out all fields");
@@ -82,7 +65,6 @@ function NewPost(props) {
         const day = today.getDate();
         const currentDate = new Date(year, month, day);
         const newPost = {
-            id: uuidv4(),
             datePosted: currentDate.toISOString().substring(0, 10),
             author: author,
             title: title,
@@ -91,11 +73,12 @@ function NewPost(props) {
             articleContent: articleContent
         }
 
-        const posts = ref(db, 'Posts');
-        const newPostRef = push(posts);
-        set(newPostRef, newPost).then(
-            alert("Post submitted successfully")
-        );
+        try {
+            const docRef = await addDoc(collection(db, "articles"), newPost);
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
         //clear fields
         setAuthor('');
         setTitle('');
@@ -105,9 +88,14 @@ function NewPost(props) {
         setArticleContent('');
     }
 
+    function checkLoggedIn() {
+        if (localStorage.getItem("loggedIn") === null) {
+            window.location.href = "/";
+        }
+    }
 
     useEffect(() => {
-        alert("This is for admins only")
+        checkLoggedIn();
     }, []);
   return (
       <ThemeProvider theme={theme}>
