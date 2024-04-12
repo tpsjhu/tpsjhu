@@ -43,7 +43,7 @@ function App() {
       <Router>
         <Header theme={theme}/>
           <Routes>
-            <Route path="/" element={<Home theme={theme}/>} /> 
+            <Route  path="/" element={<Home theme={theme}/>} />
             <Route path="/archive" element={<Archive theme={theme}/>} /> 
             <Route path="/blog/:title" element={<BlogPage theme={theme} />} />
             <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
