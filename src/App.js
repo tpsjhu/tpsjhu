@@ -14,6 +14,7 @@ import BlogPage from './BlogPage';
 import AboutUs from './AboutUs';
 import Tree from './Tree';
 import NewPost from './NewPost';
+import SignIn from './SignIn';
 
 
 // I don't think createTheme is created on time before it is passed to the different routes initially
@@ -42,12 +43,13 @@ function App() {
       <Router>
         <Header theme={theme}/>
           <Routes>
-            <Route path="/" element={<Home theme={theme}/>} /> 
+            <Route  path="/" element={<Home theme={theme}/>} />
             <Route path="/archive" element={<Archive theme={theme}/>} /> 
             <Route path="/blog/:title" element={<BlogPage theme={theme} />} />
             <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
             <Route path="/tree" element={<Tree theme={theme}/>} />
             <Route path="/newPost" element={<NewPost theme={theme}/>} />
+            <Route path="/signin" element={<SignIn theme={theme}/>} />
           </Routes>
         </Router>
       </Container>
