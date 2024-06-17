@@ -1,11 +1,9 @@
 
 
-import {useEffect, useState} from "react";
-import {TextareaAutosize, ThemeProvider, Typography} from "@mui/material";
+import { useState} from "react";
+import { ThemeProvider, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Chip from '@mui/material/Chip';
-//import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Button from "@mui/material/Button";
 
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
@@ -52,7 +50,6 @@ function SignIn(props) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in
-                const user = userCredential.user;
                 localStorage.setItem("loggedIn", "true");
                 window.location.href = "/";
             })
