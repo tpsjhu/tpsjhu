@@ -8,14 +8,41 @@ permissions:
   contents: read
   pull-requests: write
 jobs:
-  build_and_preview:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TPSDATABASE_5E4F6 }}'
-          projectId: tpsdatabase-5e4f6
+      - uses: actions/checkout@v2
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set up environment variables
+        env:
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+          REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+          REACT_APP_PROJECTID: ${{ secrets.REACT_APP_PROJECTID }}
+          REACT_APP_STORAGEBUCKET: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+          REACT_APP_MESSAGINGSENDERID: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
+          REACT_APP_APPID: ${{ secrets.REACT_APP_APPID }}
+          REACT_APP_MEASUREMENTID: ${{ secrets.REACT_APP_MEASUREMENTID }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TPSDATABASE_5E4F6 }}
+          projectId: tpsdatabase-5e4f6
+          apiKey: ${{ secrets.REACT_APP_APIKEY }}
+          authDomain: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+          storageBucket: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+          messagingSenderId: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
+          appId: ${{ secrets.REACT_APP_APPID }}
+          measurementId: ${{ secrets.REACT_APP_MEASUREMENTID }}
