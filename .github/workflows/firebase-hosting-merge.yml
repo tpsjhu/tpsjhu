@@ -24,7 +24,12 @@ jobs:
             REACT_APP_APPID: ${{ secrets.REACT_APP_APPID }}
             REACT_APP_MEASUREMENTID: ${{ secrets.REACT_APP_MEASUREMENTID }}
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TPSDATABASE_5E4F6 }}'
-          channelId: live
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TPSDATABASE_5E4F6 }}
           projectId: tpsdatabase-5e4f6
+          apiKey: ${{ secrets.REACT_APP_APIKEY }}
+          authDomain: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+          storageBucket: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+          messagingSenderId: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
+          appId: ${{ secrets.REACT_APP_APPID }}
+          measurementId: ${{ secrets.REACT_APP_MEASUREMENTID }}

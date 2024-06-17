@@ -36,6 +36,7 @@ function Filters({theme, showCards, setShowCards}) {
               filtered = allCards;
           }
 
+
           // filter by topic
           if (Object.values(topicFilters).some(val => val === true)) {
               console.log("type filters found to be true ")
