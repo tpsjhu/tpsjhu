@@ -14,6 +14,7 @@ import {useState,useEffect} from "react";
 import {initializeApp} from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import TPSDescriptor from "./components/TPSDescriptor";
 
  const firebaseConfig = {
     apiKey: process.env.REACT_APP_APIKEY,
@@ -73,7 +74,7 @@ function Home({theme}) {
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
                     <EmailCard theme={theme}/>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
-                    <DiscussionSummaries /> 
+                    <TPSDescriptor theme={theme}/>
                 </Grid>
                 </Grid>
                 </Box>
