@@ -43,7 +43,11 @@ function Filters({theme, showCards, setShowCards}) {
           if (Object.values(topicFilters).some(val => val === true)) {
               console.log("type filters found to be true ")
               for (const tag in topicFilters) {
+<<<<<<< HEAD
                   if (topicFilters[tag]) {
+=======
+                  if (to`   ````picFilters[tag]) {
+>>>>>>> e1df70c7 (changes to yaml)
                       filtered = filtered.filter(blog => (blog.tags));
                   }
               }
