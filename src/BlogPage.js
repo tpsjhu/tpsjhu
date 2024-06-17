@@ -4,11 +4,11 @@ import { Grid, Typography } from '@mui/material';
 
 // These are related to MUI Paper
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
+
 import CardContent from '@mui/material/CardContent';
 
 import { ThemeProvider } from '@mui/material/styles';
-import assets from './assets/blogs.json';
+
 import {initializeApp} from "firebase/app";
 import {get, getDatabase, ref} from "firebase/database";
 
@@ -28,26 +28,27 @@ function BlogPost(props) {
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
-  async function getBlogs() {
-    const fourPlaceCarts = ref(db, 'Posts');
-    const snapshot = await get(fourPlaceCarts);
-    if (snapshot.exists()) {
-      Object.entries(snapshot.val()).forEach(([key,value]) => {
-        if(value["id"] === uuid.title){
 
-          setBlog(value);
-          return;
-        }
-      });
-    }
-    else {
-      //  console.log("No data available");
-    }
-  }
 
   useEffect(() => {
+    async function getBlogs() {
+      const fourPlaceCarts = ref(db, 'Posts');
+      const snapshot = await get(fourPlaceCarts);
+      if (snapshot.exists()) {
+        Object.entries(snapshot.val()).forEach(([key,value]) => {
+          if(value["id"] === uuid.title){
+
+            setBlog(value);
+            return;
+          }
+        });
+      }
+      else {
+        //  console.log("No data available");
+      }
+    }
     getBlogs();
-  }, []);
+  }, [db, uuid.title]);
 
 
 
