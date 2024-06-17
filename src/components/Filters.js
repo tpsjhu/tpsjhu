@@ -21,43 +21,44 @@ function Filters({theme, showCards, setShowCards}) {
   const allCards = assets["Blog posts"].concat(assets["Speakers"], assets["Discussions"], assets["Panels"]);
 
   useEffect(() => {
-    filterBlogs();
-  }, [typeFilters, topicFilters, dateFilter]);
+      function filterBlogs ()  {
+          let filtered = [];
+          // filter by type
+          if (Object.values(typeFilters).some(val => val === true)) {
+              console.log("type filters found to be true ")
+              for (const type in typeFilters) {
+                  console.log("type filters: ", typeFilters);
+                  console.log("type : ", type);
+                  if (typeFilters[type]) {
+                      console.log("assets[type]", assets[type])
+                      filtered = filtered.concat(assets[type]);
+                  }
+                  console.log("filtered by ", type, "got", filtered);
+              }
+          } else {
+              filtered = allCards;
+          }
 
-  const filterBlogs = () => {
-    let filtered = [];
-    // filter by type 
-    if (Object.values(typeFilters).some(val => val === true)) {
-      console.log("type filters found to be true ")
-      for (const type in typeFilters) {
-        console.log("type filters: ", typeFilters);
-        console.log("type : ", type);
-        if (typeFilters[type]) {
-          console.log("assets[type]", assets[type])
-          filtered = filtered.concat(assets[type]);
-        }
-        console.log("filtered by ", type, "got", filtered);
-      }      
-    } else {
-      filtered = allCards;
-    }
+          // filter by topic
+          if (Object.values(topicFilters).some(val => val === true)) {
+              console.log("type filters found to be true ")
+              for (const tag in topicFilters) {
+                  if (topicFilters[tag]) {
+                      filtered = filtered.filter(blog => (blog.tags));
+                  }
+              }
+          }
 
-    // filter by topic 
-    if (Object.values(topicFilters).some(val => val === true)) {
-      console.log("type filters found to be true ")
-      for (const tag in topicFilters) {
-        if (topicFilters[tag]) {
-          filtered = filtered.filter(blog => (blog.tags));
-        }
+          if (filtered.length === 0) {
+              setShowCards(allCards);
+          } else {
+              setShowCards(filtered);
+          }
       }
-    }
+    filterBlogs();
+  }, [typeFilters, topicFilters, dateFilter, allCards, setShowCards]);
 
-    if (filtered.length === 0) {
-      setShowCards(allCards);
-    } else {
-      setShowCards(filtered);
-    } 
-  }
+
 
   return (
       <ThemeProvider theme={theme}>
