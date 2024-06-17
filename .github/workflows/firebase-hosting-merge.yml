@@ -7,16 +7,9 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
       - name: Set up environment variables
         env:
           REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
@@ -28,7 +21,7 @@ jobs:
           REACT_APP_MEASUREMENTID: ${{ secrets.REACT_APP_MEASUREMENTID }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
