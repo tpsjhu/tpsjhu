@@ -4,8 +4,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
@@ -17,7 +15,6 @@ import assets from '../assets/blogs.json';
 function Filters({theme, showCards, setShowCards}) {
   const [typeFilters, setTypeFilters] = useState({'Blog posts': false, 'Speakers': false, 'Discussions': false, 'Panels': false});
   const [topicFilters, setTopicFilters] = useState(assets.tags.reduce((obj, key) => ({ ...obj, [key]: false}), {}));
-  const [dateFilter, setDateFilter] = useState("None")
   const allCards = assets["Blog posts"].concat(assets["Speakers"], assets["Discussions"], assets["Panels"]);
 
   useEffect(() => {
@@ -56,7 +53,7 @@ function Filters({theme, showCards, setShowCards}) {
           }
       }
     filterBlogs();
-  }, [typeFilters, topicFilters, dateFilter, allCards, setShowCards]);
+  }, [typeFilters, topicFilters, allCards, setShowCards]);
 
 
 

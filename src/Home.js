@@ -6,14 +6,13 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 
-import DiscussionSummaries from './components/DiscussionSummaries';
 import EmailCard from './components/EmailCard';
-import { collection, doc, getDocs,query, where } from "firebase/firestore";
+import { collection, getDocs,query } from "firebase/firestore";
 
 import {useState,useEffect} from "react";
 import {initializeApp} from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth  } from "firebase/auth";
 import TPSDescriptor from "./components/TPSDescriptor";
 
  const firebaseConfig = {
@@ -35,8 +34,6 @@ function Home({theme}) {
 
 
     async function getBlogs() {
-        let todaysDate = new Date();
-
       
         const q = query(collection(db, "articles"))
         const querySnapshot = await getDocs(q);
@@ -68,7 +65,11 @@ function Home({theme}) {
                             <Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />
                             </div>
 
-                        )}})}
+                        )} else{
+                            return null;
+                            }
+
+                        })}
                 </Grid>
                 <Grid item xs={5}>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />

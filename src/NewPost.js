@@ -6,9 +6,7 @@ import Chip from '@mui/material/Chip';
 //import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Button from "@mui/material/Button";
 import { collection, addDoc } from "firebase/firestore";
-import { v4 as uuidv4 } from 'uuid';
 import {db} from "./Home";
-import {auth} from "./Home";
 
 function NewPost(props) {
     const {theme} = props;
@@ -134,6 +132,7 @@ function NewPost(props) {
                               label="Tags | Press Enter to add a new tag"
                               variant="outlined"
                               defaultValue=""
+                              value={currentTag}
                               onKeyDown={(e) => handleNewTag(e)}
                               onChange={(e) => setCurrentTag(e.target.value)}
                           />

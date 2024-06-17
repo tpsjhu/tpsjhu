@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
 
 function ByTopic(props) {
     const { theme } = props;

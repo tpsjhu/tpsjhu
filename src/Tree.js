@@ -5,8 +5,7 @@ import Timeline, {
   DateHeader  
 } from 'react-calendar-timeline'
 import 'react-calendar-timeline/lib/Timeline.css'
-import { useParams } from 'react-router-dom'
-import { Grid, Typography, Container, Box, Paper, Divider, Card, CardContent, Link} from '@mui/material';
+import { Typography, Container, Box, Divider, Card, CardContent, Link} from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 
@@ -392,7 +391,7 @@ function Tree(props) {
     }
     
     return Object.assign({}, group, {
-      title: item.group == group.id ? 
+      title: item.group === group.id ?
       (
         <div style={{...style, fontWeight: 800, height: 100}}>{group.title}</div>
       ) : <div style={style}>{group.title}</div>,

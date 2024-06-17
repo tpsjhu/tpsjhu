@@ -2,7 +2,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 function EmailForm(props) {
     const { theme } = props;
