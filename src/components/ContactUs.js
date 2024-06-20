@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import Container from "@mui/material/Container";
 
 function ContactUs(props) {
     const { theme } = props;
@@ -8,8 +9,10 @@ function ContactUs(props) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Typography variant="h5" color="white" sx={{textAlign: "left"}}>Contact Us</Typography>
-            <Typography variant="body1" color="primary" sx={{textAlign: "left", mb: 1}}>{address}</Typography>
+            <Container width="sm" sx={{mt: 5}}>
+            <Typography variant="h4" color="white" sx={{fontWeight: 800, textAlign: "left"}}>Contact Us</Typography>
+            <Typography variant="body1" color="white" sx={{textAlign: "left", mb: 1}}>{address}</Typography>
+            </Container>
         </ThemeProvider>
     );
 }

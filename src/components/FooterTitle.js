@@ -5,7 +5,9 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { InsertLink } from '@mui/icons-material';
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 function Footer(props) {
     const { theme } = props;
 
@@ -18,15 +20,14 @@ function Footer(props) {
                     </Typography>
                 <Grid container justifyContent="flex-start" sx={{mt: 2}} >
                     <Fab color="primary" size="small" aria-label="add" sx={{mr: 2, left: 'auto'}}>
-                        <InsertLink />
+                            <LinkedInIcon />
                     </Fab>
                     <Fab color="primary" size="small" aria-label="add" sx={{mr: 2, left: 'auto'}}>
-                        <InsertLink />
+                        <InstagramIcon />
                     </Fab>
                     <Fab color="primary" size="small" aria-label="add" sx={{mr: 2, left: 'auto'}}>
-                        <InsertLink />
+                        <FacebookIcon />
                     </Fab>
-
                 </Grid>
                 </Box>
             </Container>

@@ -8,15 +8,31 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import { useNavigate } from 'react-router-dom';
 
-import logo from './logo.png'; // Tell webpack this JS file uses this image
+import logo from './logo.png';
+import {StateContext} from "./Provider/StateProvider";
+import {useContext, useEffect, useState} from "react"; // Tell webpack this JS file uses this image
+
+const stateMachine = {
+    notLoggedIn: {
+        pages: ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us', 'Sign in'],
+        links: ['/', '/tree', '/archive', '/events' , '/aboutus', '/signin']
+    },
+    loggedIn: {
+        pages: ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us', 'Admin Dashboard', 'Sign out'],
+        links: ['/', '/tree', '/archive', '/events' , '/aboutus', 'dashboard', '/signin']
+    }
+}
 
 
-const pages = ['Home', 'Ancestry Tree', 'Archive', 'About Us'];
-const links = ['/', '/tree', '/archive',  '/aboutus'];
 
 
 function ResponsiveAppBar({theme}) {
   const nav = useNavigate();
+    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
+
+    useEffect(() => {
+       console.log('loggedIn', loggedIn)
+    }, [loggedIn]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -29,14 +45,23 @@ function ResponsiveAppBar({theme}) {
             </Tooltip>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {loggedIn && stateMachine.loggedIn.pages.map((item, index) => (
+                  <Button key={item}
+                          size={"large"}
+                          onClick={()=> nav(stateMachine.loggedIn.links[index])}sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}}>
+                      {item}
+                  </Button>
+              ))
+              }
 
-            {pages.map((item, index) => (
-              <Button key={item} 
-              size={"large"} 
-              onClick={()=> nav(links[index])}sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}}>
-                {item}
-              </Button>
-            ))}
+              {!loggedIn && stateMachine.notLoggedIn.pages.map((item, index) => (
+                  <Button key={item}
+                          size={"large"}
+                          onClick={()=> nav(stateMachine.notLoggedIn.links[index])}sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}}>
+                      {item}
+                  </Button>
+              ))
+              }
           </Box>
         </Toolbar>
       </AppBar>

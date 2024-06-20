@@ -1,12 +1,14 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {TextareaAutosize, ThemeProvider, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Chip from '@mui/material/Chip';
-//import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Button from "@mui/material/Button";
-import { collection, addDoc } from "firebase/firestore";
-import {db} from "./Home";
+import Request from "./API/Request";
+import {StateContext} from "./Provider/StateProvider";
+import {useNavigate} from "react-router-dom";
+import ComponentLoader from "./common/Loader/ComponentLoader";
+import GenericModal from "./components/GenericModal";
 
 function NewPost(props) {
     const {theme} = props;
@@ -16,6 +18,19 @@ function NewPost(props) {
     const [currentTag, setCurrentTag] = useState('');
     const [description, setDescription] = useState('');
     const [articleContent, setArticleContent] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [modalOpen,setModalOpen] = useState(false)
+    const [image, setImage] = useState(null);
+    const nav = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            nav('/signIn')
+        }
+    }, []);
+
+    const Req = new Request();
 
     const styles = {
         container: {
@@ -53,6 +68,7 @@ function NewPost(props) {
 
     async function handleNewPost(e){
         e.preventDefault();
+        setLoading(true)
         if(!author || !title || !tags || !description || !articleContent){
             alert("Please fill out all fields");
             return;
@@ -68,15 +84,22 @@ function NewPost(props) {
             title: title,
             tags: tags,
             description: description,
-            articleContent: articleContent
+            articleContent: articleContent,
+            uuid: "",
+            image: false,
         }
-
-        try {
-            const docRef = await addDoc(collection(db, "articles"), newPost);
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
+        if(image){
+            newPost['image'] = true
         }
+        if(tags.length > 0){
+            await Req.addTags(tags);
+        }
+        const uuid = await Req.postBody("articles", newPost);
+        if (image){
+            await Req.uploadFile(image, uuid);
+        }
+        setModalOpen(true)
+        setLoading(false)
         //clear fields
         setAuthor('');
         setTitle('');
@@ -86,17 +109,21 @@ function NewPost(props) {
         setArticleContent('');
     }
 
-    function checkLoggedIn() {
-        if (localStorage.getItem("loggedIn") === null) {
-            window.location.href = "/";
-        }
+    function handleFileChange(e){
+        const file = e.target.files[0]
+        setImage(file)
     }
 
-    useEffect(() => {
-        checkLoggedIn();
-    }, []);
-  return (
+    const {loggedIn} = useContext(StateContext);
+
+
+    return (
       <ThemeProvider theme={theme}>
+          {modalOpen && <GenericModal open={modalOpen} setOpen={setModalOpen}
+                                      theme={theme}
+                                      description={"Congrats on submitting your post! Check the main page to see it up"}
+                                      title={"You created a new post!"}/>}
+          {loading ? <ComponentLoader/> :
           <section style={styles.container}>
               <Typography variant="h3" gutterBottom sx={{fontWeight: 800}} color="header.secondary" align="center">
                   New Blog Post
@@ -161,12 +188,24 @@ function NewPost(props) {
                               onChange={(e) => setArticleContent(e.target.value)}
                           />
                       </Grid>
+
+                      <Grid item xs={12}>
+                          <p>Image (ONLY JPGS PLEASE)</p>
+                          <TextField
+                              name="upload-photo"
+                              type="file"
+                              onChange={(e) => handleFileChange(e)}
+                          />
+                      </Grid>
+                      <Grid item xs={12}>
+                          {image && <img src={URL.createObjectURL(image)} width={150} height={150}/> }
+                      </Grid>
                   </Grid>
                   <Button sx={{ m: 0, fontWeight: 800, width: '100%', height: '100%', textTransform: 'lowercase' }} variant="contained" onClick={(e) => handleNewPost(e)}>Submit Post</Button>
               </Grid>
 
           </section>
-
+          }
 
 
       </ThemeProvider>

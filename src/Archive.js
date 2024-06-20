@@ -4,32 +4,47 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
-import { ref,get   } from "firebase/database";
 import BlogResult from './components/BlogResult';
 import Filters from './components/Filters';
-import { db } from './Home';
+import Request from "./API/Request";
+import ComponentLoader from "./common/Loader/ComponentLoader";
   
 function SearchResults({theme}) {
     const [showCards, setShowCards] = useState(null);
+    const [tags, setTags] = useState([])
+    const [blogsLoading, setBlogsLoading] = useState(false)
+    const [tagsLoading , setTagsLoading] = useState(false)
+    const Req = new Request();
 
     async function getBlogs() {
-        const fourPlaceCarts = ref(db, 'Posts');
-        const snapshot = await get(fourPlaceCarts);
-        if (snapshot.exists()) {
+        setBlogsLoading(true)
+        const values = await Req.get('articles')
+        if (values != null) {
             let posts = []
-            Object.entries(snapshot.val()).forEach(([key,value]) => {
-                posts.push(value);
+            values.forEach((doc) => {
+                posts.push(doc.data());
             });
             setShowCards(posts)
-          //  console.log(snapshot.val());
+        } else {
+              console.log("No data available");
         }
-        else {
-          //  console.log("No data available");
-        }
+        setBlogsLoading(false)
+    }
+
+    async function getTags(){
+        setTagsLoading(true)
+        const values = await Req.get('tags')
+        let tagList = []
+        values.forEach((doc) => {
+            tagList.push(doc.data().tagValue);
+        });
+        setTags(tagList)
+        setTagsLoading(false)
     }
 
     useEffect(() => {
         getBlogs();
+        getTags();
     }, []);
 
 
@@ -39,19 +54,33 @@ function SearchResults({theme}) {
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={4} sx={{mt: 1}}>
                 <Grid item xs={4}>
-                    <Filters theme={theme} setShowCards={setShowCards}/>
+                    {tagsLoading ? <ComponentLoader/> :
+                        <>
+                            {tags &&
+                                <Filters theme={theme} setShowCards={setShowCards} tags={tags}/>
+                            }
+                        </>
+                    }
                 </Grid>
-                <Grid item xs={8}>
-                    <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
-                    <Grid container spacing={4} sx={{mt: 1}}>
-                            {showCards && showCards.map((blog, index) => {
-                                    return ( <Grid item xs={6}>
 
-                                    <BlogResult theme={theme} blog={blog}/>
-                                    </Grid>
-                                )})}
+                    <Grid item xs={8}>
+                        {blogsLoading ? <ComponentLoader/> :
+                            <>
+
+                                <Divider sx={{mb: 2, borderBottomWidth: 5, bgcolor: '#021882'}}/>
+                                <Grid container spacing={4} sx={{mt: 1}}>
+                                    {showCards && showCards.map((blog, index) => {
+                                        return (<Grid item xs={6}>
+
+                                                <BlogResult theme={theme} blog={blog}/>
+                                            </Grid>
+                                        )
+                                    })}
+
+                                </Grid>
+                            </>
+                        }
                     </Grid>
-                </Grid>
                 </Grid>
                 </Box>
         </Container>

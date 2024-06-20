@@ -16,8 +16,11 @@ function Footer(props) {
             <EmailFooter />
             <Box component="div" noValidate autoComplete="off"       sx={{
                 height: 400,
-                backgroundColor: 'black',
-            }}>
+                background: "linear-gradient(to right, #5371FF, #031A82);"
+                // backgroundColor: 'black',
+
+            }}
+            >
                 <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={5}>
@@ -26,7 +29,9 @@ function Footer(props) {
                     <Grid item xs={3}>
                         <ContactUs theme={theme}/>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} direction="row"
+                          justifyContent="flex-end"
+                          alignItems="center">
                         <ByTopic theme={theme}/>
                     </Grid>
                     <Grid item xs={1}>

@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 function ByTopic(props) {
     const { theme } = props;
@@ -16,12 +17,14 @@ function ByTopic(props) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Typography variant="h5" color="white" sx={{textAlign: "left"}}>By Topic</Typography>
+            <Container width="sm" sx={{mt: 5}}>
+            <Typography variant="h4" color="white" sx={{fontWeight: 800, textAlign: "left"}}>By Topic</Typography>
             {topics.map((topic, index) => (
                 <a href="/archive">
-                    <Typography variant="body1" color="primary" sx={{textAlign: "left"}} >{topic}</Typography>
+                    <Typography variant="body1" color="white" sx={{textAlign: "left"}} >{topic}</Typography>
                 </a>
             ))}
+            </Container>
         </ThemeProvider>
     );
 }

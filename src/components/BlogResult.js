@@ -17,7 +17,7 @@ function BlogResult(props) {
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}}>
         <CardContent>
           <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }}component="div" color="header.primary">
-            <Link to={`/blog/${blog.title.replaceAll(' ', '-')}`}>
+            <Link to={`/blog/${blog.uuid}`}>
             {blog.title}
             </Link>
           </Typography>
