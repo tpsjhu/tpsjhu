@@ -13,7 +13,7 @@ function BlogCard(props) {
     const { theme, blog } = props;
     const navigate = useNavigate();
     function handleNavigate(){
-        navigate('/blog/'+ blog.id)
+        navigate('/blog/'+ blog.uuid)
     }
 
     return (
@@ -21,9 +21,11 @@ function BlogCard(props) {
         <Box>
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}}>
         <CardContent>
-          <Typography variant="h3" sx={{fontWeight: 800, textAlign: 'left' }}component="div" color="header.primary">
-            {blog.title}
-          </Typography>
+            <a href={'/blog/'+ blog.uuid}>
+                <Typography variant="h3" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">
+                    {blog.title}
+                </Typography>
+            </a>
           <Typography variant="subtitle1" sx={{ mb: 1, textAlign: 'left' }} color="text.secondary">
             {blog.datePosted + " " +blog.author}
           </Typography>

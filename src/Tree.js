@@ -404,7 +404,7 @@ function Tree(props) {
     <ThemeProvider theme={theme}>
     <Container sx={{padding: 4}}> 
     <Container fixed sx={{width: "full", height: "full"}}>
-    <Typography color="header.primary" variant="h3" sx={{fontWeight: 800, textAlign: 'center', marginBottom: 5}} >Ineractive Timeline</Typography>
+    <Typography color="header.primary" variant="h3" sx={{fontWeight: 800, textAlign: 'center', marginBottom: 5}} >Interactive Timeline</Typography>
     <Typography color="black" variant="subtitle1" sx={{textAlign: 'center', marginBottom: 5}} >Description of the timeline, intention with the project etc. </Typography>
     </Container>
 
