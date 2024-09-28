@@ -16,8 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Set up environment variables
-      - name: Set up environment variables
         env:
           REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
           REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
