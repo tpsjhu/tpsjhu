@@ -49,6 +49,11 @@ function SignIn(props) {
             localStorage.removeItem("token");
         }, []);
 
+        useEffect(() => {
+            if(localStorage.getItem("token")){
+                setLoggedIn(true);
+            }
+        }, []);
 
     function handleLogIn(e){
         e.preventDefault();
@@ -56,7 +61,8 @@ function SignIn(props) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in
-                localStorage.setItem("token", userCredential.providerId);
+                console.log(userCredential)
+                localStorage.setItem("token", userCredential.user.accessToken);
                 setLoggedIn(true);
                 nav("/dashboard");
                 setLoading(false)

@@ -14,7 +14,7 @@ function BlogCard({theme,blog}) {
     const Req = new Request();
     async function getImage(){
         console.log(blog.uuid)
-        Req.getFile(blog.uuid).then((url) => {
+        Req.getFile(blog.uuid, "image").then((url) => {
             console.log(url)
             setImage(url)
         })

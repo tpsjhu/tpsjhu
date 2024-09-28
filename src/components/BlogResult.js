@@ -25,6 +25,7 @@ function BlogResult(props) {
             direction="row"
             spacing={2}
             sx={{my: 1,}}
+
             >
                 {blog.tags ? Object.entries(blog.tags).map(([key, value]) => (
                     <Chip label={value} color="primary"/>

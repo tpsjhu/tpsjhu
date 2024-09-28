@@ -1,4 +1,4 @@
-import {addDoc, collection, doc, getDoc, getDocs, query, updateDoc} from "firebase/firestore";
+import {addDoc, collection, doc, getDoc, getDocs, query, updateDoc, setDoc} from "firebase/firestore";
 import {db} from "../App";
 import {getDownloadURL, getStorage, ref, uploadBytes} from "firebase/storage";
 
@@ -16,6 +16,16 @@ class Request {
             return false;
         }
     }
+
+    async putBody(path, uuid, body) {
+        try {
+            await setDoc(doc(db, path, uuid), body);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            return false;
+        }
+    }
+
 
     async get(path) {
         const q = query(collection(db, path))
@@ -40,9 +50,9 @@ class Request {
 
     }
 
-    async uploadFile(blob, uuid){
+    async uploadFile(blob, uuid, fileName){
         const storage = getStorage();
-        const storageRef = ref(storage, `${uuid}/` + 'image');
+        const storageRef = ref(storage, `${uuid}/` + fileName);
         uploadBytes(storageRef, blob).then((snapshot) => {
             console.log('Uploaded a blob or file!', snapshot);
             return snapshot;
@@ -52,10 +62,10 @@ class Request {
         })
     }
 
-    async getFile(uuid) {
+    async getFile(uuid, fileName) {
         const storage = getStorage();
         try {
-            return await getDownloadURL(ref(storage, `${uuid}/image`));
+            return await getDownloadURL(ref(storage, `${uuid}/${fileName}`));
         } catch (error) {
             console.error('Error fetching download URL:', error);
             return null; // or handle the error as needed

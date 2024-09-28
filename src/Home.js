@@ -14,6 +14,7 @@ import Event from "./components/Event";
 import Button from "@mui/material/Button";
 import about_us from "./assets/about_us.png";
 import ComponentLoader from "./common/Loader/ComponentLoader";
+import MainEvent from "./components/MainEvent";
 function Home({theme}) {
     const [blogs, setBlogs] = useState(null);
     const [blogLoading, setBlogLoading] = useState(true);
@@ -67,29 +68,37 @@ function Home({theme}) {
                             {blogs && blogs.length > 0 &&
                                 <FeaturedBlogCard theme={theme} blog={blogs[0]}/>
                             }
-                            {blogs && blogs.slice(0,10)
-                                .map((blog, index) => {
-                                    if (index !== 0) {
-                                        return ( <div>
-                                                <BlogCard theme={theme} blog={blog}/>
-                                                <Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />
-                                            </div>
-
-                                        )} else{
-                                        return null;
-                                    }
-
-                                })}
                         </>
                     }
 
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={5} spacing={2}>
+                    <MainEvent theme={theme}/>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
                     <EmailCard theme={theme}/>
                     <Divider sx={{ mb: 2, borderBottomWidth: 5, bgcolor: '#021882' }} />
                     <TPSDescriptor theme={theme}/>
                 </Grid>
+                </Grid>
+
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    {blogs && blogs.slice(0,10)
+                        .map((blog, index) => {
+                            if (index !== 0) {
+                                return (
+                                    <Grid item xs={2} sm={4} md={6} key={index}>
+                                        <div>
+                                            <Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />
+                                            <BlogCard theme={theme} blog={blog}/>
+                                            {/*<Divider sx={{ borderBottomWidth: 5, bgcolor: '#021882' }} />*/}
+                                        </div>
+                                    </Grid>
+
+                                )} else{
+                                return null;
+                            }
+
+                        })}
                 </Grid>
 
                 <Grid item xs={7} sx={{mt: 10, mb: 10}}>
@@ -99,30 +108,30 @@ function Home({theme}) {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid item xs={7}>
-                    <Typography variant="h3"  sx={{fontWeight: 800}} color="header.primary" align="center">
-                        Upcoming Events
-                    </Typography>
+                {/*<Grid item xs={7}>*/}
+                {/*    <Typography variant="h3"  sx={{fontWeight: 800}} color="header.primary" align="center">*/}
+                {/*        Upcoming Events*/}
+                {/*    </Typography>*/}
 
-                    <Grid container spacing={4} sx={{mt: 1}}>
-                        {events && events.slice(0,3).map((event, index) => {
-                            return (
-                                <Grid item xs={2} sm={4} md={4} key={index}>
-                                    <Event theme={theme} title={event.title} date={event.date}
-                                           location={event.location} link={null} type={event.type} image={event.image}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                </Grid>
+                {/*    <Grid container spacing={4} sx={{mt: 1}}>*/}
+                {/*        {events && events.slice(0,3).map((event, index) => {*/}
+                {/*            return (*/}
+                {/*                <Grid item xs={2} sm={4} md={4} key={index}>*/}
+                {/*                    <Event theme={theme} title={event.title} date={event.date}*/}
+                {/*                           location={event.location} link={null} type={event.type} image={event.image}/>*/}
+                {/*                </Grid>*/}
+                {/*            )*/}
+                {/*        })}*/}
+                {/*    </Grid>*/}
+                {/*</Grid>*/}
 
-                <Grid item xs={7} sx={{mt: 10, mb: 10}}>
-                    <Grid item xs={12}  align="center" >
-                        <Button variant="outlined"   color="primary" href="/events" size="large" sx={{mt: 2, borderRadius: 28}}>
-                            Explore More Events
-                        </Button>
-                    </Grid>
-                </Grid>
+                {/*<Grid item xs={7} sx={{mt: 10, mb: 10}}>*/}
+                {/*    <Grid item xs={12}  align="center" >*/}
+                {/*        <Button variant="outlined"   color="primary" href="/events" size="large" sx={{mt: 2, borderRadius: 28}}>*/}
+                {/*            Explore More Events*/}
+                {/*        </Button>*/}
+                {/*    </Grid>*/}
+                {/*</Grid>*/}
 
                 <Grid item xs={7}>
 
@@ -141,7 +150,7 @@ function Home({theme}) {
                 </div>
                         </Grid>
 
-                <Button variant="outlined"   color="primary" href="/archive" size="large" sx={{mt: 2, borderRadius: 28 }}>
+                <Button variant="outlined"   color="primary" href="https://join.slack.com/t/tps2022/shared_invite/zt-2rgvh2kv9-gRcVXIs_dj~2scfU5UqJZQ" size="large" sx={{mt: 2, borderRadius: 28 }}>
                     Become a Member Today!
                 </Button>
                 </Grid>

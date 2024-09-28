@@ -29,11 +29,11 @@ function Footer(props) {
                     <Grid item xs={3}>
                         <ContactUs theme={theme}/>
                     </Grid>
-                    <Grid item xs={3} direction="row"
-                          justifyContent="flex-end"
-                          alignItems="center">
-                        <ByTopic theme={theme}/>
-                    </Grid>
+                    {/*<Grid item xs={3} direction="row"*/}
+                    {/*      justifyContent="flex-end"*/}
+                    {/*      alignItems="center">*/}
+                    {/*    <ByTopic theme={theme}/>*/}
+                    {/*</Grid>*/}
                     <Grid item xs={1}>
                         
                     </Grid>

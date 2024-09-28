@@ -14,12 +14,12 @@ import {useContext, useEffect, useState} from "react"; // Tell webpack this JS f
 
 const stateMachine = {
     notLoggedIn: {
-        pages: ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us', 'Sign in'],
-        links: ['/', '/tree', '/archive', '/events' , '/aboutus', '/signin']
+        pages: ['Home', 'Archive',  'About Us'],
+        links: ['/', '/archive', '/aboutus', '/signin']
     },
     loggedIn: {
-        pages: ['Home', 'Ancestry Tree', 'Archive', 'Events', 'About Us', 'Admin Dashboard', 'Sign out'],
-        links: ['/', '/tree', '/archive', '/events' , '/aboutus', 'dashboard', '/signin']
+        pages: ['Home', 'Archive', 'About Us', 'Admin Dashboard', 'Sign out'],
+        links: ['/', '/archive', '/aboutus', 'dashboard', '/signin']
     }
 }
 
@@ -28,7 +28,7 @@ const stateMachine = {
 
 function ResponsiveAppBar({theme}) {
   const nav = useNavigate();
-    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
+    const {loggedIn, setLoggedIn} = useContext(StateContext);
 
     useEffect(() => {
        console.log('loggedIn', loggedIn)
@@ -48,7 +48,13 @@ function ResponsiveAppBar({theme}) {
               {loggedIn && stateMachine.loggedIn.pages.map((item, index) => (
                   <Button key={item}
                           size={"large"}
-                          onClick={()=> nav(stateMachine.loggedIn.links[index])}sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}}>
+                          onClick={()=> {
+                              if (stateMachine.loggedIn.links[index] === '/signin'){
+                                    localStorage.removeItem('token')
+                                    setLoggedIn(null)
+                              }
+                              nav(stateMachine.loggedIn.links[index])
+                          }}sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}}>
                       {item}
                   </Button>
               ))
