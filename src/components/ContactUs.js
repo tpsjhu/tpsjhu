@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 function ContactUs(props) {
     const { theme } = props;
 
-    const address = "Technology & Policy Society \b XX Building, XX Street,\b Baltimore, MD 21218 \b someone@jhu.edu"
+    const address = "Technology & Policy Society \b 3400 North Charles St.\b Baltimore, MD 21218 \b tps.jhu@gmail.com"
 
     return (
         <ThemeProvider theme={theme}>

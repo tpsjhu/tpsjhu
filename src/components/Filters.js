@@ -12,9 +12,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import assets from '../assets/blogs.json';
 
 
-function Filters({theme, showCards, setShowCards, tags}) {
-  const [typeFilters, setTypeFilters] = useState({'Blog posts': false, 'Speakers': false, 'Discussions': false, 'Panels': false});
-  const [topicFilters, setTopicFilters] = useState(tags.reduce((obj, key) => ({ ...obj, [key]: false}), {}));
+function Filters({theme, showCards, setShowCards, tags, typeFilters, setTypeFilters, topicFilters, setTopicFilters}) {
+
   const allCards = assets["Blog posts"].concat(assets["Speakers"], assets["Discussions"], assets["Panels"]);
   // useEffect(() => {
   //     function filterBlogs ()  {

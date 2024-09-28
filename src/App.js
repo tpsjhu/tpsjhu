@@ -53,6 +53,12 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+        setLoggedIn(true);
+    }
+  }, [])
+
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -73,7 +79,7 @@ function App() {
             <Route path="/blog/:uuid" element={<BlogPage theme={theme} />} />
             <Route path="/aboutus" element={<AboutUs theme={theme}/>} /> 
             <Route path="/tree" element={<Tree theme={theme}/>} />
-            <Route path="/newPost" element={<NewPost theme={theme}/>} />
+            <Route path="/newPost/:pathId?" element={<NewPost theme={theme}/>} />
             <Route path="/newEvent" element={<NewEvent theme={theme}/> } />
             <Route path="/signin" element={<SignIn theme={theme}/>} />
             <Route path="/events" element={<Events theme={theme}/>} />

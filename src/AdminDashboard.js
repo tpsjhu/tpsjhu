@@ -53,24 +53,24 @@ function AdminDashboard({theme}) {
                     </Card>
                 </Grid>
 
-                <Grid item xs={4}>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            component="img"
-                            height="140"
-                            image={genericEvents}
-                            alt="green iguana"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Create an Event
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="large" sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}} variant="contained" onClick={(e)=>nav('/newEvent')}>New Event</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
+                {/*<Grid item xs={4}>*/}
+                {/*    <Card sx={{ maxWidth: 345 }}>*/}
+                {/*        <CardMedia*/}
+                {/*            component="img"*/}
+                {/*            height="140"*/}
+                {/*            image={genericEvents}*/}
+                {/*            alt="green iguana"*/}
+                {/*        />*/}
+                {/*        <CardContent>*/}
+                {/*            <Typography gutterBottom variant="h5" component="div">*/}
+                {/*                Create an Event*/}
+                {/*            </Typography>*/}
+                {/*        </CardContent>*/}
+                {/*        <CardActions>*/}
+                {/*            <Button size="large" sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}} variant="contained" onClick={(e)=>nav('/newEvent')}>New Event</Button>*/}
+                {/*        </CardActions>*/}
+                {/*    </Card>*/}
+                {/*</Grid>*/}
             </Grid>
         </section>
     </ThemeProvider>
