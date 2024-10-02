@@ -61,7 +61,11 @@ function BlogPost(props) {
           ( blog &&
         <div style={{padding: '16px'}}>
 
-          <img height={300} width={300} src={image} alt=" " />
+          <img style={{
+              width: '100%',
+              height: 'auto',
+            }}
+               src={image} alt=" " />
 
 
           <Typography variant="h3" gutterBottom sx={{fontWeight: 800}} color="header.primary">
@@ -71,6 +75,9 @@ function BlogPost(props) {
           <Typography variant="subtitle1" gutterBottom sx={{mb: 2}}>
             {blog.datePosted} | By {blog.author}
           </Typography>
+            <Typography variant="body1" gutterBottom sx={{mb: 2}}>
+                {blog.description}
+            </Typography>
             {loggedIn &&
                 <Button
                     variant="contained"

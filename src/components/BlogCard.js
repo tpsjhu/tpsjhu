@@ -33,11 +33,11 @@ function BlogCard({theme,blog}) {
         >
         <CardContent>
             {image ?
-                <Grid container spacing={4} sx={{mt: 1}}>
-                    {image && <Grid item xs={4}>
-                        <img src={image} width={150} height={150}/>
-                    </Grid>}
-                    <Grid item xs={4}>
+                <>
+                        {image && <img src={image} style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}/>}
                         <a href={'/blog/'+ blog.uuid}>
                             <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">
                                 {blog.title}
@@ -49,8 +49,8 @@ function BlogCard({theme,blog}) {
                         <Typography variant="body1" sx={{textAlign: 'left'}}>
                             {blog.description}
                         </Typography>
-                    </Grid>
-                </Grid> :
+                </>
+                    :
             <>
                 <a href={'/blog/'+ blog.uuid}>
                     <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">

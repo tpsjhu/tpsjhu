@@ -11,10 +11,10 @@ import {useNavigate} from "react-router-dom";
 import default_blob_post_picture from "../images/default_blob_post_picture.png";
 
 function BlogCard(props) {
-    const { theme, blog } = props;
+    const { theme } = props;
     const navigate = useNavigate();
     function handleNavigate(){
-        navigate('/blog/'+ blog.uuid)
+        navigate('/blog/'+ 'qboLa9pXeZISC9rktHxA')
     }
 
     return (
@@ -23,23 +23,23 @@ function BlogCard(props) {
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}}>
         <CardContent>
 
-            <img src={default_blob_post_picture} alt={blog.title} style={{width: '100%', height: 'auto'}}/>
+            <img src={default_blob_post_picture} style={{width: '100%', height: 'auto'}}/>
 
             {/*<a href={'/blog/'+ blog.uuid}>*/}
                 <Typography variant="h3" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">
-                    {blog.title}
+                    {/*{blog.title}*/}
+                    How can we build AI systems to help lawyers write legal documents?
                 </Typography>
             {/*</a>*/}
           <Typography variant="subtitle1" sx={{ mb: 1, textAlign: 'left' }} color="text.secondary">
-            {blog.datePosted + " " +blog.author}
+            {/*{blog.datePosted + " " +blog.author}*/}
+              2024-09-30 Abe Hou
           </Typography>
           <Typography variant="body1" sx={{textAlign: 'left'}}>
-            {blog.description}
+            {/*{blog.description}*/}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="large" sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}} variant="contained" onClick={handleNavigate}>Read More</Button>
-        </CardActions>
+            <Button size="large"  sx={{ ml: 2, fontWeight: 800, textTransform: 'capitalize'}} variant="contained" onClick={handleNavigate}>Read More</Button>
       </Card>
       </Box>
       </ThemeProvider>

@@ -17,9 +17,9 @@ function TPSDescriptor(props){
                         <Typography variant="h5" color="header.primary" sx={{fontWeight: 800}}>What is TPS?</Typography>
                     </Grid>
                     <Typography variant="body1" sx={{textAlign: 'left'}} color="text.secondary" > {description}</Typography>
-                    <Grid item xs={12} >
-                        <Divider variant="fullWidth" sx={{ borderBottomWidth: 5, bgcolor: "header.primary" }} />
-                    </Grid>
+                    {/*<Grid item xs={12} >*/}
+                    {/*    <Divider variant="fullWidth" sx={{ borderBottomWidth: 5, bgcolor: "header.primary" }} />*/}
+                    {/*</Grid>*/}
                 </Grid>
             </Box>
             </ThemeProvider>
