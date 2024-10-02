@@ -66,7 +66,7 @@ function Home({theme}) {
                     <ComponentLoader/> :
                         <>
                             {blogs && blogs.length > 0 &&
-                                <FeaturedBlogCard theme={theme} blog={blogs[0]}/>
+                                <FeaturedBlogCard theme={theme} />
                             }
                         </>
                     }
@@ -84,7 +84,7 @@ function Home({theme}) {
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {blogs && blogs.slice(0,10)
                         .map((blog, index) => {
-                            if (index !== 0) {
+                            if (blog.uuid !== "qboLa9pXeZISC9rktHxA") {
                                 return (
                                     <Grid item xs={2} sm={4} md={6} key={index}>
                                         <div>
