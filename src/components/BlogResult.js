@@ -16,7 +16,7 @@ function BlogResult(props) {
         <Box>
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}}>
         <CardContent>
-          <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }}component="div" color="header.primary">
+          <Typography variant="h5" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">
             <Link to={`/blog/${blog.uuid}`}>
             {blog.title}
             </Link>
@@ -32,7 +32,7 @@ function BlogResult(props) {
                 )) : null
                 }
           </Stack>
-          <Typography variant="body1" sx={{textAlign: 'left'}}>
+          <Typography variant="body2" sx={{textAlign: 'left'}}>
             {blog.description}
           </Typography>
         </CardContent>

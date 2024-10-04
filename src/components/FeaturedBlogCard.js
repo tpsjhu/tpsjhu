@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import { ThemeProvider } from '@mui/material/styles';
 import {useNavigate} from "react-router-dom";
-import default_blob_post_picture from "../images/default_blob_post_picture.png";
+import featured_post_picture from "../images/FeaturedPost.png";
 
 function BlogCard(props) {
     const { theme } = props;
@@ -23,7 +23,7 @@ function BlogCard(props) {
         <Card elevation={0} sx={{ minWidth: 275, mb: 3}}>
         <CardContent>
 
-            <img src={default_blob_post_picture} style={{width: '100%', height: 'auto'}}/>
+            <img src={featured_post_picture} style={{width: '100%', height: 'auto'}}/>
 
             {/*<a href={'/blog/'+ blog.uuid}>*/}
                 <Typography variant="h3" sx={{fontWeight: 800, textAlign: 'left' }} component="div" color="header.primary">
