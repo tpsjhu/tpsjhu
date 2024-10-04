@@ -14,12 +14,12 @@ import {useContext, useEffect, useState} from "react"; // Tell webpack this JS f
 
 const stateMachine = {
     notLoggedIn: {
-        pages: ['Home', 'Archive',  'About Us'],
-        links: ['/', '/archive', '/aboutus', '/signin']
+        pages: ['Home', 'Policython' ,'Archive',  'About Us'],
+        links: ['/', '/eventdisplay', '/archive', '/aboutus', '/signin']
     },
     loggedIn: {
-        pages: ['Home', 'Archive', 'About Us', 'Admin Dashboard', 'Sign out'],
-        links: ['/', '/archive', '/aboutus', 'dashboard', '/signin']
+        pages: ['Home', 'Policython' ,'Archive', 'About Us', 'Admin Dashboard', 'Sign out'],
+        links: ['/', '/eventdisplay', '/archive', '/aboutus', 'dashboard', '/signin']
     }
 }
 

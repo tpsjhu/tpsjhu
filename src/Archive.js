@@ -91,18 +91,18 @@ function SearchResults({theme}) {
         <ThemeProvider theme={theme}>
         <Container maxWidth="lg">
             <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={4} sx={{mt: 1}}>
-                <Grid item xs={4}>
+            <Grid container spacing={1} sx={{mt: 1}}>
+                <Grid item xs={2}>
                     <Filters theme={theme} setShowCards={setShowCards}
                              typeFilters={typeFilters} setTypeFilters={setTypeFilters}
                              topicFilters={topicFilters} setTopicFilters={setTopicFilters}/>
                 </Grid>
 
-                    <Grid item xs={8}>
+                    <Grid item xs={10}>
                         {blogsLoading ? <ComponentLoader/> :
                             <>
 
-                                <Divider sx={{mb: 2, borderBottomWidth: 5, bgcolor: '#021882'}}/>
+                                <Divider sx={{mb: 0.5, borderBottomWidth: 5, bgcolor: '#021882'}}/>
                                 <Grid container spacing={4} sx={{mt: 1}}>
                                     {showCards && filterCards(showCards).map((blog, index) => {
                                         return (<Grid item xs={6} style={{overflowX: "scroll"}}>

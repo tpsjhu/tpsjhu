@@ -58,7 +58,7 @@ function Filters({theme, showCards, setShowCards, tags, typeFilters, setTypeFilt
 
   return (
       <ThemeProvider theme={theme}>
-        <Box sx={{ overflow: 'auto' }}>
+        <Box sx={{ overflow: 'auto' }} maxWidth={200}>
         <Box sx={{ overflow: 'auto' }}>
         <Typography variant="h4" sx={{ my: 2, fontWeight: 800, textAlign: 'left' }} color="header.primary">Filters</Typography>
         {/* <Typography variant="h6" sx={{ fontWeight: 600, textAlign: 'left' }} color="header.primary">Date</Typography>        

@@ -15,7 +15,9 @@ function MainEvent(props){
 
                 <Grid container spacing={2}>
                     <Grid item sx={12}>
+                        <a href={"/eventdisplay"}>
                         <Typography variant="h5" color="header.primary" sx={{fontWeight: 800}}>FIRST TPS EVENT: Policython!</Typography>
+                            </a>
                     </Grid>
                     <Grid container spacing={2} sx={{mt:0.25}}>
                         <Grid item xs={6}>

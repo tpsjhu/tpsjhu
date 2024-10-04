@@ -46,7 +46,7 @@ function BlogCard({theme,blog}) {
                         <Typography variant="subtitle1" sx={{ mb: 1, textAlign: 'left' }} color="text.secondary">
                             {blog.datePosted + " " +blog.author}
                         </Typography>
-                        <Typography variant="body1" sx={{textAlign: 'left'}}>
+                        <Typography variant="body2" sx={{textAlign: 'left'}}>
                             {blog.description}
                         </Typography>
                 </>
